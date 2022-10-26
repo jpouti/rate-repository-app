@@ -1,5 +1,6 @@
 import { View, StyleSheet, Pressable } from 'react-native';
 import Text from './text'
+import theme from '../theme';
 import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
@@ -8,7 +9,7 @@ const styles = StyleSheet.create({
     paddingLeft: 25,
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: '#24292',
+    backgroundColor: theme.backgroundColors.transparentDark,
   },
   flexItemA: {
     paddingTop: 40,

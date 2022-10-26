@@ -5,6 +5,9 @@ const theme = {
       primary: '#0366d6',
       white: '#FFFFFF'
     },
+    backgroundColors: {
+        transparentDark: '#24292e'
+    },
     fontSizes: {
       body: 14,
       subheading: 18,
@@ -16,6 +19,7 @@ const theme = {
       normal: '400',
       bold: '700',
     },
+    
   };
   
   export default theme;
