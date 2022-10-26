@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Link } from 'react-router-native'
 import Text from './text'
 import theme from '../theme';
@@ -24,12 +24,14 @@ const styles = StyleSheet.create({
 
 const AppBar = () => {
   return <View style={styles.container}>
-            <Link to="/" style={styles.flexItemA}>
-                <Text fontWeight="bold" fontSize="subheading" color='white' style={styles.textOver}>Repositories</Text>
-            </Link>
-            <Link to="/sign" style={styles.flexItemA}>
-                <Text fontWeight="bold" fontSize="subheading" color='white' style={styles.textOver}>Sign In</Text> 
-            </Link>
+            <ScrollView horizontal>
+                <Link to="/" style={styles.flexItemA}>
+                    <Text fontWeight="bold" fontSize="subheading" color='white'>Repositories</Text>
+                </Link>
+                <Link to="/sign" style={styles.flexItemA}>
+                    <Text fontWeight="bold" fontSize="subheading" color='white'>Sign In</Text> 
+                </Link>
+            </ScrollView>
         </View>;
 };
 
