@@ -4,6 +4,7 @@ import RepositoryItem from './RepositoryItem';
 const styles = StyleSheet.create({
   separator: {
     height: 10,
+    backgroundColor: 'lightgrey'
   },
 });
 
@@ -56,7 +57,7 @@ const repositories = [
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const renderItem = ({ item }) => <RepositoryItem fullName={item.fullName} desc={item.description} lang={item.language} forks={item.forksCount} stars={item.stargazersCount} ratingAvg={item.ratingAverage} reviewCount={item.reviewCount} />
+const renderItem = ({ item }) => <RepositoryItem fullName={item.fullName} desc={item.description} lang={item.language} forks={item.forksCount} stars={item.stargazersCount} ratingAvg={item.ratingAverage} reviewCount={item.reviewCount} ownerAvatarUrl={item.ownerAvatarUrl}/>
 
 const RepositoryList = () => {
   return (
