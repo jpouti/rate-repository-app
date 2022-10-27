@@ -1,4 +1,4 @@
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 
 const windowWidth = Dimensions.get('window').width
 const halfWidth = windowWidth / 2
@@ -22,7 +22,11 @@ const theme = {
       signInput: 16,
     },
     fonts: {
-      main: 'System',
+      main: Platform.select({
+        android: 'Roboto',
+        ios: 'Arial',
+        default: 'System',
+      }),
     },
     fontWeights: {
       normal: '400',
