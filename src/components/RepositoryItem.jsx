@@ -3,11 +3,10 @@ import { View, Image, StyleSheet } from "react-native";
 import Text from "./text";
 import theme from "../theme";
 
-console.log(theme.width.width)
-
 const styles = StyleSheet.create({
     container: {
-        margin: 15,
+        padding: 15,
+        backgroundColor: 'white'
     },
     picMargin: {
         marginRight: 15,
