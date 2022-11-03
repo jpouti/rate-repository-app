@@ -20,3 +20,13 @@ export const GET_REPOSITORIES = gql`
           }
         }
 `;
+
+// query the authenticated user
+export const GET_ME = gql`
+    query {
+      me {
+        id
+        username
+      }
+    }
+`
