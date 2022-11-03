@@ -58,7 +58,7 @@ const RepositoryItem = ({ fullName, desc, lang, forks, stars, ratingAvg, reviewC
     }
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} testID='repositoryItem'>
             <View style={theme.flexContainerRow}>
                 <View style={styles.picMargin}>
                     <Image style={theme.images.profilePicture} source={{ uri: ownerAvatarUrl}}/>
