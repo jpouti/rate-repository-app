@@ -1,6 +1,8 @@
 import React from "react";
 import { RepositoryListContainer } from "../../components/RepositoryList";
 import { render } from '@testing-library/react-native'
+// eslint-disable-next-line no-unused-vars
+import { useNavigate } from 'react-router-native';
 
 describe('RepositoryList', () => {
     describe('RepositoryListContainer', () => {

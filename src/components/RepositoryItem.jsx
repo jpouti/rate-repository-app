@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, Button } from "react-native";
 import Text from "./text";
 import theme from "../theme";
+import * as Linking from 'expo-linking';
 
 const styles = StyleSheet.create({
     container: {
@@ -34,26 +35,50 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 25,
         paddingTop: 10
+    },
+    button: {
+        marginTop: 5,
+        padding: 2.5,
+        borderRadius: 5,
     }
 
 
 })
 
-const RepositoryItem = ({ fullName, desc, lang, forks, stars, ratingAvg, reviewCount, ownerAvatarUrl }) => {
+// repository Item
+const RepositoryItem = ({ item, repBtn }) => {
+
+    // if repBtn prop called (SingleRepository) -> add button to open repository url
+    const repositoryButton = () => {
+        if (!repBtn) {
+            return null
+        } else {
+            // press opens the repository link
+            const onPress = () => {
+                Linking.openURL(item.url)
+            }
+            return (
+                <View style={styles.button}>
+                    <Button onPress={() => onPress()} title="Open in Github">
+                    </Button>
+                </View>
+            )
+        }
+    }
     // star and fork value displayed in thousands if larger than 1000
     const getStarValue = () => {
-        if (stars >= 1000) {
-            return `${(stars / 1000).toFixed(1)}k`
+        if (item.stargazersCount >= 1000) {
+            return `${(item.stargazersCount / 1000).toFixed(1)}k`
         } else {
-            return `${stars}`
+            return `${item.stargazersCount}`
         }
     }
 
     const getForkvalue = () => {
-        if (forks >= 1000) {
-            return `${(forks / 1000).toFixed(1)}k`
+        if (item.forksCount >= 1000) {
+            return `${(item.forksCount / 1000).toFixed(1)}k`
         } else {
-            return `${forks}`
+            return `${item.forksCount}`
         }
     }
 
@@ -61,12 +86,12 @@ const RepositoryItem = ({ fullName, desc, lang, forks, stars, ratingAvg, reviewC
         <View style={styles.container} testID='repositoryItem'>
             <View style={theme.flexContainerRow}>
                 <View style={styles.picMargin}>
-                    <Image style={theme.images.profilePicture} source={{ uri: ownerAvatarUrl}}/>
+                    <Image style={theme.images.profilePicture} source={{ uri: item.ownerAvatarUrl}}/>
                 </View>
                 <View style={styles.infoContainer}>
-                    <Text fontWeight="bold" fontSize="subheading" style={styles.infoMargin}>{fullName}</Text>
-                    <Text color="textSecondary" style={styles.infoMargin}>{desc}</Text>
-                    <Text color="white" style={styles.langugage}>{lang}</Text>
+                    <Text fontWeight="bold" fontSize="subheading" style={styles.infoMargin}>{item.fullName}</Text>
+                    <Text color="textSecondary" style={styles.infoMargin}>{item.description}</Text>
+                    <Text color="white" style={styles.langugage}>{item.language}</Text>
                 </View>
             </View>
             <View style={styles.bottomContainer}>
@@ -79,14 +104,15 @@ const RepositoryItem = ({ fullName, desc, lang, forks, stars, ratingAvg, reviewC
                     <Text color="textSecondary">Forks</Text>
                 </View>
                 <View style={theme.flexContainerCenter}>
-                    <Text fontWeight="bold">{reviewCount}</Text>
+                    <Text fontWeight="bold">{item.reviewCount}</Text>
                     <Text color="textSecondary">Reviews</Text>
                 </View>
                 <View style={theme.flexContainerCenter}>
-                    <Text fontWeight="bold">{ratingAvg}</Text>
+                    <Text fontWeight="bold">{item.ratingAverage}</Text>
                     <Text color="textSecondary">Rating</Text>
-                </View>                                
+                </View>                             
             </View>
+            {repositoryButton()}
         </View>
     )
 }
