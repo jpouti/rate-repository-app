@@ -44,7 +44,7 @@ const SignIn = () => {
   )
 };
 
-const SignInForm = ({ onSubmit }) => {
+export const SignInForm = ({ onSubmit }) => {
   return (
     <View style={theme.signContainer}>
         <FormikTextInput name="username" placeholder="Username" />
