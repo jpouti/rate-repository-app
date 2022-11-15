@@ -9,7 +9,9 @@ const useSingleRepository = (id) => {
         fetchPolicy: 'cache-and-network',
     })
 
-    if (loading) return <View>loading</View>
+    if (loading) {
+        return <View>loading</View>
+    } 
     if (error) return <View>error {error}</View>
 
     const repository = data.repository
