@@ -56,6 +56,7 @@ const AppBar = () => {
                 <Tab link={'/createReview'} text='Create a review' show={user} />
                 <Tab link={'/signin'} text='Sign In' show={!user} />
                 <Tab link={'/signout'} text='Sign Out' show={user} />
+                <Tab link={'/signup'} text='Sign Up' show={!user} />
             </ScrollView>
         </View>;
 };
