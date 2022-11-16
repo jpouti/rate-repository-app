@@ -9,7 +9,7 @@ import { GET_ME } from '../graphql/queries';
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    paddingLeft: 15,
+    paddingLeft: 5,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   flexItemA: {
     paddingTop: 40,
     paddingBottom: 25,
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     flexGrow: 0,
   },
 });
@@ -53,6 +53,7 @@ const AppBar = () => {
   return <View style={styles.container}>
             <ScrollView horizontal>
                 <Tab link={'/'} text='Repositories' show='true' />
+                <Tab link={'/createReview'} text='Create a review' show={user} />
                 <Tab link={'/signin'} text='Sign In' show={!user} />
                 <Tab link={'/signout'} text='Sign Out' show={user} />
             </ScrollView>
