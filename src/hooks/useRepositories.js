@@ -5,22 +5,27 @@ import { useQuery } from "@apollo/client";
 
 import { GET_REPOSITORIES } from "../graphql/queries";
 
-const useRepositories = (order) => {
-    let variables = {}
+const useRepositories = (order, search) => {
+    let variables = {
+        searchKeyword: search,
+    }
 
     // check correct variable based on order 
     if (order === 'latest') {
         variables = {
+            ...variables ,
             orderBy: 'CREATED_AT',
             orderDirection: 'ASC',
         }
     } else if (order === 'highest') {
         variables = {
+            ...variables ,
             orderBy: 'RATING_AVERAGE',
             orderDirection: 'DESC',
         }
     } else if (order === 'lowest') {
         variables = {
+            ...variables ,
             orderBy: 'RATING_AVERAGE',
             orderDirection: 'ASC',
         }
