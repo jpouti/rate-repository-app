@@ -36,19 +36,30 @@ const ReviewItem = ({ review }) => {
 const SingleRepository = () => {
     let { repositoryId } = useParams()
 
+    const variables = {
+        id: repositoryId,
+        first: 7,
+    }
+
     const repository = useSingleRepository(repositoryId)
-    const { reviews } = useReviews(repositoryId)
+    const { reviews, fetchMore } = useReviews(variables)
 
     const reviewNodes = reviews
     ? reviews.edges.map(edge => edge.node)
     : []
 
+    const onEndReach = () => {
+        fetchMore()
+    }
+
     return (
         <FlatList
-            ListHeaderComponent={() => <RepositoryItem item={repository} repBtn={true} />}
+            ListHeaderComponent={<RepositoryItem item={repository} repBtn={true} />}
             data={reviewNodes}
             renderItem={({ item }) => <ReviewItem review={item} /> }
             keyExtractor={({ id }) => id}
+            onEndReached={onEndReach}
+            onEndReachedThreshold={0.5}
         />
     )
 }
