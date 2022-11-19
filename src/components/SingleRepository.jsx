@@ -14,8 +14,16 @@ const styles = StyleSheet.create({
     },
   });
 
-const ReviewItem = ({ review }) => {
+export const ReviewItem = ({ review, repositoryName }) => {
+    let name;
     const time = format(new Date(review.createdAt), 'dd.MM.yyyy')
+
+    // if repositoryName prop is given, display repository name instead of user name
+    if (repositoryName) {
+        name = repositoryName
+    } else {
+        name = review.user.username
+    }
     return (
         <><View style={styles.separator} /><View style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'white', padding: 15 }}>
             <View style={{ display: 'flex', justifyContent: 'flex-start', marginRight: 15 }}>
@@ -24,7 +32,7 @@ const ReviewItem = ({ review }) => {
                 </View>
             </View>
             <View>
-                <Text fontWeight="bold" style={{ paddingBottom: 3 }}>{review.user.username}</Text>
+                <Text fontWeight="bold" style={{ paddingBottom: 3 }}>{name}</Text>
                 <Text color="textSecondary" style={{ paddingBottom: 3 }}>{time}</Text>
                 <Text style={{ maxWidth: theme.width.width * 0.75 }}>{review.text}</Text>
             </View>
