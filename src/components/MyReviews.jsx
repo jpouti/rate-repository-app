@@ -1,4 +1,3 @@
-
 import { FlatList } from "react-native"
 import useUser from "../hooks/useUser"
 
@@ -13,7 +12,7 @@ const MyReviewContainer = ({ reviews }) => {
     return (
         <FlatList
           data={reviewNodes}
-          renderItem={({ item }) => <ReviewItem review={item} repositoryName={item.repository.fullName} /> }
+          renderItem={({ item }) => <ReviewItem review={item} myReviews={true} /> }
           keyExtractor={({ id }) => id }
         />
     )
